@@ -67,6 +67,16 @@ public class TestBase  {
                 new Object[]{"internet explorer", "11.0", "Windows 7"},
                 new Object[]{"internet explorer", "11.0", "Windows 7"},
                 new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
+                new Object[]{"internet explorer", "11.0", "Windows 7"},
         };
     }
 
