@@ -4,6 +4,8 @@ import com.yourcompany.Pages.GuineaPigPage;
 import org.openqa.selenium.InvalidElementStateException;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.Capabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.testng.Assert;
 
 import java.lang.reflect.Method;
@@ -27,6 +29,8 @@ public class TextInputTest extends TestBase {
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();
+
+        System.out.println(((RemoteWebDriver)driver).getCapabilities().toString());
 
         String commentInputText = UUID.randomUUID().toString();
 
