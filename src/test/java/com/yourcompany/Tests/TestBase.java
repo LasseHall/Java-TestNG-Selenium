@@ -18,6 +18,9 @@ import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.UnexpectedException;
+import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.Map;
 
 /**
  * Simple TestNG test which demonstrates being instantiated via a DataProvider in order to supply multiple browser combinations.
@@ -57,12 +60,12 @@ public class TestBase  {
                 new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"chrome", "54.0", "OS X 10.10"},
                 new Object[]{"firefox", "latest-1", "Windows 7"},*/
-                new Object[]{"safari", "10.0", "OS X 10.11"},
+                /*new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"safari", "9.0", "OS X 10.11"},
                 new Object[]{"safari", "10.0", "OS X 10.12"},
-                new Object[]{"safari", "8.0", "OS X 10.10"},
+                new Object[]{"safari", "8.0", "OS X 10.10"},*/
                 new Object[]{"safari", "7.0", "OS X 10.9"},
-                new Object[]{"safari", "6.0", "OS X 10.8"},
+                //new Object[]{"safari", "6.0", "OS X 10.8"},
         };
     }
 
@@ -102,6 +105,13 @@ public class TestBase  {
         capabilities.setCapability(CapabilityType.VERSION, version);
         capabilities.setCapability(CapabilityType.PLATFORM, os);
         capabilities.setCapability("name", methodName);
+        capabilities.setCapability("commandTimeout", 60);
+        capabilities.setCapability("idleTimeout", 300);
+        Map<String, String> prerun = new HashMap<String, String>();
+        prerun.put("executable", "sauce-storage:open_safari.sh");
+        prerun.put("args", "/S -a -q");
+        prerun.put("background","true");
+        capabilities.setCapability("prerun", prerun);
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
