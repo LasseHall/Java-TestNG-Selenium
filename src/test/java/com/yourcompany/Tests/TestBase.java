@@ -111,7 +111,7 @@ public class TestBase  {
         prerun.put("executable", "sauce-storage:open_safari.sh");
         prerun.put("args", "/S -a -q");
         prerun.put("background","true");
-        capabilities.setCapability("prerun", prerun);
+        //capabilities.setCapability("prerun", prerun);
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
