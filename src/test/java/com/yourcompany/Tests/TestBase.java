@@ -65,7 +65,6 @@ public class TestBase  {
                 new Object[]{"safari", "10.0", "OS X 10.12"},
                 new Object[]{"safari", "8.0", "OS X 10.10"},
                 new Object[]{"safari", "7.0", "OS X 10.9"},
-                new Object[]{"safari", "6.0", "OS X 10.8"},
         };
     }
 
