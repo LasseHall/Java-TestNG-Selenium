@@ -53,6 +53,7 @@ public class TestBase  {
      */
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) throws JSONException {
+        System.out.println(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
         Object[][] browsers = new Object[][]{};
             JSONArray array = new JSONArray(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
             for (int i = 0; i < array.length(); i++) {
@@ -111,6 +112,7 @@ public class TestBase  {
         }
 
         // Launch remote browser and set it as the current thread
+        System.out.println(capabilities.toString());
         webDriver.set(new RemoteWebDriver(
                 new URL("https://" + username + ":" + accesskey + "@ondemand.saucelabs.com:443/wd/hub"),
                 capabilities));
