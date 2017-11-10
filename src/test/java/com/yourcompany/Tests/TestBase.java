@@ -4,6 +4,9 @@ import com.saucelabs.common.SauceOnDemandAuthentication;
 import com.saucelabs.common.SauceOnDemandSessionIdProvider;
 import com.saucelabs.testng.SauceOnDemandAuthenticationProvider;
 import com.saucelabs.testng.SauceOnDemandTestListener;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
@@ -49,15 +52,19 @@ public class TestBase  {
      * @return Two dimensional array of objects with browser, version, and platform information
      */
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
-    public static Object[][] sauceBrowserDataProvider(Method testMethod) {
-        return new Object[][]{
-                new Object[]{"MicrosoftEdge", "14.14393", "Windows 10"},
+    public static Object[][] sauceBrowserDataProvider(Method testMethod) throws JSONException {
+        Object[][] browsers = new Object[][]{};
+            JSONArray array = new JSONArray(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+            for (int i = 0; i < array.length(); i++) {
+                JSONObject browser = array.getJSONObject(i);
+                browsers[i] = new Object[]{browser.get("browser"), browser.get("browserVersion"), browser.get("os")};
+            }
+                /*new Object[]{"MicrosoftEdge", "14.14393", "Windows 10"},
                 new Object[]{"firefox", "49.0", "Windows 10"},
                 new Object[]{"internet explorer", "11.0", "Windows 7"},
                 new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"chrome", "54.0", "OS X 10.10"},
-                new Object[]{"firefox", "latest-1", "Windows 7"},
-        };
+                new Object[]{"firefox", "latest-1", "Windows 7"},*/
     }
 
     /**
