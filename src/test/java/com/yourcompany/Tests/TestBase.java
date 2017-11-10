@@ -58,7 +58,7 @@ public class TestBase  {
             JSONArray array = new JSONArray(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
             for (int i = 0; i < array.length(); i++) {
                 JSONObject browser = array.getJSONObject(i);
-                browsers[i] = new Object[]{browser.get("browser"), browser.get("browserVersion"), browser.get("os")};
+                browsers[i] = new Object[]{browser.get("browser"), browser.get("browser-version"), browser.get("os")};
             }
                 /*new Object[]{"MicrosoftEdge", "14.14393", "Windows 10"},
                 new Object[]{"firefox", "49.0", "Windows 10"},
