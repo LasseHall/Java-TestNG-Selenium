@@ -53,20 +53,20 @@ public class TestBase  {
      */
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) throws JSONException {
-        System.out.println(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-        Object[][] browsers = new Object[][]{};
-            JSONArray array = new JSONArray(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
-            for (int i = 0; i < array.length(); i++) {
-                JSONObject browser = array.getJSONObject(i);
-                browsers[i] = new Object[]{browser.get("browser"), browser.get("browser-version"), browser.get("os")};
-            }
+
+        JSONArray array = new JSONArray(System.getenv("SAUCE_ONDEMAND_BROWSERS"));
+        Object[][] browsers = new Object[array.length()][3];
+        System.out.println("array.length: " + array.length());
+        for (int i = 0; i < array.length(); i++) {
+            JSONObject browser = array.getJSONObject(i);
+            browsers[i] = new Object[]{browser.getString("browser"), browser.getString("browser-version"), browser.getString("os")};
+        }
                 /*new Object[]{"MicrosoftEdge", "14.14393", "Windows 10"},
                 new Object[]{"firefox", "49.0", "Windows 10"},
                 new Object[]{"internet explorer", "11.0", "Windows 7"},
                 new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"chrome", "54.0", "OS X 10.10"},
                 new Object[]{"firefox", "latest-1", "Windows 7"},*/
-        System.out.println(browsers.toString());
         return browsers;
     }
 
