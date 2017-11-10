@@ -65,6 +65,8 @@ public class TestBase  {
                 new Object[]{"safari", "10.0", "OS X 10.11"},
                 new Object[]{"chrome", "54.0", "OS X 10.10"},
                 new Object[]{"firefox", "latest-1", "Windows 7"},*/
+        System.out.println(browsers.toString());
+        return browsers;
     }
 
     /**

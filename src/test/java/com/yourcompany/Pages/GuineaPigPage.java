@@ -22,7 +22,7 @@ public class GuineaPigPage {
     private WebElement submitButton;
 
     public WebDriver driver;
-    public static String url = "https://saucelabs-sample-test-frameworks.github.io/training-test-page";
+    public static String url = "http://localhost:8000";
 
     public static GuineaPigPage visitPage(WebDriver driver) {
         GuineaPigPage page = new GuineaPigPage(driver);
