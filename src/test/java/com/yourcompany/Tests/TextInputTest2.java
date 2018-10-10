@@ -11,19 +11,20 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.UUID;
 
-
 /**
  * Created by mehmetgerceker on 12/7/15.
  */
 
-public class TextInputTest extends TestBase {
+public class TextInputTest2 extends TestBase {
 
     /**
-     * Runs a simple test verifying if the comment input is functional.
+     * Runs a simple test verifying link can be followed.
+     *
      * @throws InvalidElementStateException
      */
+
     @Test(dataProvider = "hardCodedBrowsers")
-    public void verifyCommentInputTest(String browser, String version, String os, Method method)
+    public void verifyCommentInputTest2(String browser, String version, String os, Method method)
             throws InvalidElementStateException, IOException {
         this.createDriver(browser, version, os, method.getName());
         WebDriver driver = this.getWebDriver();

@@ -1,8 +1,7 @@
 package com.yourcompany.Tests;
 
 import com.yourcompany.Pages.GuineaPigPage;
-import org.openqa.selenium.InvalidElementStateException;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.*;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -21,7 +20,7 @@ public class FollowLinkTest extends TestBase {
      *
      * @throws InvalidElementStateException
      */
-    @Test(dataProvider = "hardCodedBrowsers")
+    //@Test(dataProvider = "hardCodedBrowsers")
     public void verifyLinkTest(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 

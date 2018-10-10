@@ -65,7 +65,7 @@
                             <value>methods</value>
                         </property>
                         <property>
-                            <name>threadCount</name>
+                            <name>threadcount</name>
                             <value>100</value>
                         </property>
                         <property>
