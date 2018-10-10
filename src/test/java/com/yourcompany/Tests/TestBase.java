@@ -1,26 +1,20 @@
 package com.yourcompany.Tests;
 
-import com.saucelabs.common.SauceOnDemandAuthentication;
-import com.saucelabs.common.SauceOnDemandSessionIdProvider;
-import com.saucelabs.testng.SauceOnDemandAuthenticationProvider;
-import com.saucelabs.testng.SauceOnDemandTestListener;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.DataProvider;
-import org.testng.annotations.Listeners;
 
 import java.lang.reflect.Method;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.rmi.UnexpectedException;
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
 
 /**
  * Simple TestNG test which demonstrates being instantiated via a DataProvider in order to supply multiple browser combinations.
@@ -125,7 +119,7 @@ public class TestBase  {
     /**
      * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the browser,
      * version and os parameters, and which is configured to run against ondemand.saucelabs.com, using
-     * the username and access key populated by the {@link #authentication} instance.
+     * the username and access key fetched from Environment Variables.
      *
      * @param browser Represents the browser to be used as part of the test run.
      * @param version Represents the version of the browser to be used as part of the test run.
