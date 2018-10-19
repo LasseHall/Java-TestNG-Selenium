@@ -66,11 +66,11 @@
                         </property>
                         <property>
                             <name>threadcount</name>
-                            <value>100</value>
+                            <value>200</value>
                         </property>
                         <property>
                             <name>dataproviderthreadcount</name>
-                            <value>100</value>
+                            <value>200</value>
                         </property>
                     </properties>
                 </configuration>
