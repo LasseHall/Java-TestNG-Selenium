@@ -1,6 +1,7 @@
 package com.yourcompany.Tests;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Platform;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.CapabilityType;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -176,6 +177,26 @@ public class TestBase  {
                 new Object[]{"chrome", "latest-8", "Linux"},
                 new Object[]{"chrome", "latest-9", "Linux"},
                 new Object[]{"chrome", "latest-10", "Linux"},
+
+                new Object[]{"Chrome", "7.1", "Android GoogleAPI Emulator"},
+                new Object[]{"Chrome", "7.0", "Android GoogleAPI Emulator"},
+                new Object[]{"Chrome", "6.0", "Android GoogleAPI Emulator"},
+                new Object[]{"Browser", "5.1", "Android GoogleAPI Emulator"},
+                new Object[]{"Browser", "5.0", "Android GoogleAPI Emulator"},
+                new Object[]{"Browser", "4.4", "Android GoogleAPI Emulator"},
+
+                new Object[]{"Chrome", "6.0", "Android Emulator"},
+                new Object[]{"Browser", "5.1", "Android Emulator"},
+                new Object[]{"Browser", "5.0", "Android Emulator"},
+                new Object[]{"Browser", "4.4", "Android Emulator"},
+
+                new Object[]{"Chrome", "7.1", "Samsung Galaxy S9 WQHD GoogleAPI Emulator"},
+                new Object[]{"Chrome", "7.0", "Samsung Galaxy S9 WQHD GoogleAPI Emulator"},
+
+                new Object[]{"Chrome", "7.1", "Google Pixel GoogleAPI Emulator"},
+                new Object[]{"Chrome", "7.0", "Google Pixel GoogleAPI Emulator"},
+
+
         };
     }
 
@@ -211,9 +232,23 @@ public class TestBase  {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         // set desired capabilities to launch appropriate browser on Sauce
-        capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
-        capabilities.setCapability(CapabilityType.VERSION, version);
-        capabilities.setCapability(CapabilityType.PLATFORM, os);
+        if (os.equals(Platform.ANDROID) || os.equals(Platform.IOS)) {
+            // Emu/Sim
+            if (os.contains("iPhone")) {
+                capabilities.setCapability("platformName", "iOS");
+            } else {
+                capabilities.setCapability("platformName", "Android");
+            }
+            capabilities.setCapability("deviceName", os);
+            capabilities.setCapability("deviceOrientation", "portrait");
+            capabilities.setCapability("appiumVersion", "1.9.1");
+            capabilities.setCapability("platformVersion", version);
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+        } else {
+            capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
+            capabilities.setCapability(CapabilityType.VERSION, version);
+            capabilities.setCapability(CapabilityType.PLATFORM, os);
+        }
         capabilities.setCapability("name", methodName);
         capabilities.setCapability("commandTimeout", 60);
         capabilities.setCapability("idleTimeout", 300);
