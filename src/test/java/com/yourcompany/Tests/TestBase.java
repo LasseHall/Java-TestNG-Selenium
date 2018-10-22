@@ -51,6 +51,21 @@ public class TestBase  {
     @DataProvider(name = "hardCodedBrowsers", parallel = true)
     public static Object[][] sauceBrowserDataProvider(Method testMethod) {
         return new Object[][]{
+
+                // Problematic old browser versions
+                /*new Object[]{"chrome", "60", "Windows 10"},
+                new Object[]{"chrome", "59", "Windows 10"},
+                new Object[]{"chrome", "58", "Windows 10"},
+                new Object[]{"chrome", "57", "Windows 10"},
+                new Object[]{"chrome", "56", "Windows 10"},
+                new Object[]{"chrome", "55", "Windows 10"},
+                new Object[]{"chrome", "54", "Windows 10"},
+                new Object[]{"chrome", "53", "Windows 10"},
+                new Object[]{"chrome", "52", "Windows 10"},
+                new Object[]{"chrome", "51", "Windows 10"},
+                new Object[]{"chrome", "50", "Windows 10"},*/
+
+
                 new Object[]{"MicrosoftEdge", "latest", "Windows 10"},
                 new Object[]{"MicrosoftEdge", "latest-1", "Windows 10"},
                 new Object[]{"MicrosoftEdge", "latest-2", "Windows 10"},
@@ -79,6 +94,8 @@ public class TestBase  {
                 new Object[]{"chrome", "latest-8", "Windows 10"},
                 new Object[]{"chrome", "latest-9", "Windows 10"},
                 new Object[]{"chrome", "latest-10", "Windows 10"},
+
+
 
                 new Object[]{"internet explorer", "latest", "Windows 8.1"},
                 new Object[]{"firefox", "latest", "Windows 8.1"},
@@ -132,17 +149,17 @@ public class TestBase  {
                 new Object[]{"internet explorer", "latest-1", "Windows 7"},
                 new Object[]{"internet explorer", "latest-2", "Windows 7"},
                 new Object[]{"internet explorer", "latest-3", "Windows 7"},
-                new Object[]{"firefox", "latest", "Windows 8"},
-                new Object[]{"firefox", "latest-1", "Windows 8"},
-                new Object[]{"firefox", "latest-2", "Windows 8"},
-                new Object[]{"firefox", "latest-3", "Windows 8"},
-                new Object[]{"firefox", "latest-4", "Windows 8"},
-                new Object[]{"firefox", "latest-5", "Windows 8"},
-                new Object[]{"firefox", "latest-6", "Windows 8"},
-                new Object[]{"firefox", "latest-7", "Windows 8"},
-                new Object[]{"firefox", "latest-8", "Windows 8"},
-                new Object[]{"firefox", "latest-9", "Windows 8"},
-                new Object[]{"firefox", "latest-10", "Windows 8"},
+                new Object[]{"firefox", "latest", "Windows 7"},
+                new Object[]{"firefox", "latest-1", "Windows 7"},
+                new Object[]{"firefox", "latest-2", "Windows 7"},
+                new Object[]{"firefox", "latest-3", "Windows 7"},
+                new Object[]{"firefox", "latest-4", "Windows 7"},
+                new Object[]{"firefox", "latest-5", "Windows 7"},
+                new Object[]{"firefox", "latest-6", "Windows 7"},
+                new Object[]{"firefox", "latest-7", "Windows 7"},
+                new Object[]{"firefox", "latest-8", "Windows 7"},
+                new Object[]{"firefox", "latest-9", "Windows 7"},
+                new Object[]{"firefox", "latest-10", "Windows 7"},
                 new Object[]{"chrome", "latest", "Windows 7"},
                 new Object[]{"chrome", "latest-1", "Windows 7"},
                 new Object[]{"chrome", "latest-2", "Windows 7"},
@@ -232,9 +249,9 @@ public class TestBase  {
         DesiredCapabilities capabilities = new DesiredCapabilities();
 
         // set desired capabilities to launch appropriate browser on Sauce
-        if (os.equals(Platform.ANDROID) || os.equals(Platform.IOS)) {
+        if (os.contains("Simulator") || os.contains("Emulator")) {
             // Emu/Sim
-            if (os.contains("iPhone")) {
+            if (os.contains("Simulator")) {
                 capabilities.setCapability("platformName", "iOS");
             } else {
                 capabilities.setCapability("platformName", "Android");
@@ -275,7 +292,7 @@ public class TestBase  {
      */
     @AfterMethod
     public void tearDown(ITestResult result) throws Exception {
-        ((JavascriptExecutor) webDriver.get()).executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
+        //((JavascriptExecutor) webDriver.get()).executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
         System.out.println("SauceOnDemandSessionID=" + getSessionId() + " job-name=" + result.getName());
         webDriver.get().quit();
     }
