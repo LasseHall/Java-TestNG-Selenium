@@ -42,6 +42,8 @@ public class TestBase  {
      */
     private ThreadLocal<String> sessionId = new ThreadLocal<String>();
 
+    private ThreadLocal<Boolean> isMobile = new ThreadLocal<Boolean>();
+
     /**
      * DataProvider that explicitly sets the browser combinations to be used.
      *
@@ -232,6 +234,10 @@ public class TestBase  {
         return sessionId.get();
     }
 
+    public Boolean isMobile() {
+        return isMobile.get();
+    }
+
     /**
      * Constructs a new {@link RemoteWebDriver} instance which is configured to use the capabilities defined by the browser,
      * version and os parameters, and which is configured to run against ondemand.saucelabs.com, using
@@ -251,6 +257,7 @@ public class TestBase  {
         // set desired capabilities to launch appropriate browser on Sauce
         if (os.contains("Simulator") || os.contains("Emulator")) {
             // Emu/Sim
+            isMobile.set(true);
             if (os.contains("Simulator")) {
                 capabilities.setCapability("platformName", "iOS");
             } else {
@@ -262,6 +269,7 @@ public class TestBase  {
             capabilities.setCapability("platformVersion", version);
             capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
         } else {
+            isMobile.set(false);
             capabilities.setCapability(CapabilityType.BROWSER_NAME, browser);
             capabilities.setCapability(CapabilityType.VERSION, version);
             capabilities.setCapability(CapabilityType.PLATFORM, os);
@@ -292,7 +300,9 @@ public class TestBase  {
      */
     @AfterMethod
     public void tearDown(ITestResult result) throws Exception {
-        //((JavascriptExecutor) webDriver.get()).executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
+        if (!isMobile.get()) {
+            ((JavascriptExecutor) webDriver.get()).executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
+        }
         System.out.println("SauceOnDemandSessionID=" + getSessionId() + " job-name=" + result.getName());
         webDriver.get().quit();
     }
