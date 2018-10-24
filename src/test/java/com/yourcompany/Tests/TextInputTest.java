@@ -35,7 +35,7 @@ public class TextInputTest extends TestBase {
         page.submitComment(commentInputText);
 
         // Take a screenshot
-        //File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+        ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         // Now you can do whatever you need to do with it, for example copy somewhere
         //FileUtils.copyFile(scrFile, new File("/Users/lassehall/Git/Java-TestNG-Selenium/Screenshot.jpeg"));
 
