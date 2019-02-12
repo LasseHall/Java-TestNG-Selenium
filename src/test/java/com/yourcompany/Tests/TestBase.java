@@ -150,7 +150,6 @@ public class TestBase  {
                 new Object[]{"internet explorer", "latest", "Windows 7"},
                 new Object[]{"internet explorer", "latest-1", "Windows 7"},
                 new Object[]{"internet explorer", "latest-2", "Windows 7"},
-                new Object[]{"internet explorer", "latest-3", "Windows 7"},
                 new Object[]{"firefox", "latest", "Windows 7"},
                 new Object[]{"firefox", "latest-1", "Windows 7"},
                 new Object[]{"firefox", "latest-2", "Windows 7"},
