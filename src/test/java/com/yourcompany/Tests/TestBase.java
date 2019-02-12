@@ -189,7 +189,6 @@ public class TestBase  {
 
 
                 new Object[]{"Chrome", "6.0", "Android Emulator"},
-                new Object[]{"Browser", "5.1", "Android Emulator"},
 
                 new Object[]{"Chrome", "7.1", "Samsung Galaxy S9 WQHD GoogleAPI Emulator"},
                 new Object[]{"Chrome", "7.0", "Samsung Galaxy S9 WQHD GoogleAPI Emulator"},
