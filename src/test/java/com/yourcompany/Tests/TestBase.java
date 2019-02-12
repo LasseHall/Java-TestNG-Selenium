@@ -272,9 +272,9 @@ public class TestBase  {
      */
     @AfterMethod
     public void tearDown(ITestResult result) throws Exception {
-        if (!isMobile.get()) {
+        //if (!isMobile.get()) {
             ((JavascriptExecutor) webDriver.get()).executeScript("sauce:job-result=" + (result.isSuccess() ? "passed" : "failed"));
-        }
+        //}
         System.out.println("SauceOnDemandSessionID=" + getSessionId() + " job-name=" + result.getName());
         webDriver.get().quit();
     }
