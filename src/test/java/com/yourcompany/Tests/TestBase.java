@@ -159,20 +159,6 @@ public class TestBase  {
                 new Object[]{"chrome", "latest-9", "Windows 7"},
                 new Object[]{"chrome", "latest-10", "Windows 7"},
 
-                new Object[]{"firefox", "latest", "Linux"},
-                new Object[]{"firefox", "latest-1", "Linux"},
-                new Object[]{"firefox", "latest-2", "Linux"},
-                new Object[]{"firefox", "latest-3", "Linux"},
-                new Object[]{"firefox", "latest-4", "Linux"},
-                new Object[]{"firefox", "latest-5", "Linux"},
-
-                new Object[]{"chrome", "latest", "Linux"},
-                new Object[]{"chrome", "latest-1", "Linux"},
-                new Object[]{"chrome", "latest-2", "Linux"},
-                new Object[]{"chrome", "latest-3", "Linux"},
-                new Object[]{"chrome", "latest-4", "Linux"},
-                new Object[]{"chrome", "latest-5", "Linux"},
-
 
                 new Object[]{"Chrome", "7.1", "Android GoogleAPI Emulator"},
                 new Object[]{"Chrome", "7.0", "Android GoogleAPI Emulator"},
