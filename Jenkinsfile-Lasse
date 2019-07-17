@@ -1,0 +1,17 @@
+node {
+    // Mark the code checkout 'stage'....
+    stage 'Checkout'
+    // Get some code from a GitHub repository
+    git branch: 'eudc', url: 'https://github.com/LasseHall/Java-TestNG-Selenium.git'
+    // Note: if this is copy and pasted into pipeline script, the following will work while the above handles branches and such
+    // git url: 'https://github.com/saucelabs-sample-test-frameworks/Java-TestNG-Selenium.git'
+
+    stage 'Test'
+    sauce('lassehall-Sauce-VDC') {
+        sh "mvn test"
+    }
+
+    stage 'Collect Results'
+    step([$class: 'JUnitResultArchiver', testResults: '**/target/surefire-reports/TEST-*.xml'])
+    step([$class: 'SauceOnDemandTestPublisher'])
+}
