@@ -20,7 +20,7 @@ public class FollowLinkTest extends TestBase {
      *
      * @throws InvalidElementStateException
      */
-    //@Test(dataProvider = "hardCodedBrowsers")
+    //@Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
     public void verifyLinkTest(String browser, String version, String os, Method method)
             throws MalformedURLException, InvalidElementStateException, UnexpectedException {
 

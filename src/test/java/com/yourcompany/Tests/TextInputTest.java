@@ -22,7 +22,7 @@ public class TextInputTest extends TestBase {
      * Runs a simple test verifying if the comment input is functional.
      * @throws InvalidElementStateException
      */
-    @Test(dataProvider = "hardCodedBrowsers")
+    @Test(dataProvider = "hardCodedBrowsers", alwaysRun = true)
     public void verifyCommentInputTest(String browser, String version, String os, Method method)
             throws InvalidElementStateException, IOException {
         this.createDriver(browser, version, os, method.getName());
