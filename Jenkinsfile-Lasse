@@ -8,7 +8,9 @@ node {
 
     stage 'Test'
     sauce('lassehall-Sauce-VDC') {
-        sh "mvn test"
+        sauceconnect(options: 'tunnelIdentifier: JenkinsVMTunnel, -x https://eu-central-1.saucelabs.com/rest/v1', sauceConnectPath: '', useLatestSauceConnect: true, verboseLogging: true) {
+            sh "mvn test"
+        }
     }
 
     stage 'Collect Results'
