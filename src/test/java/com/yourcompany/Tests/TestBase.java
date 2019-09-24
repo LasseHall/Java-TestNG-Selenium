@@ -235,8 +235,8 @@ public class TestBase  {
         capabilities.setCapability("name", methodName);
         capabilities.setCapability("commandTimeout", 60);
         capabilities.setCapability("idleTimeout", 300);
-        capabilities.setCapability("extendedDebugging", true);
-        capabilities.setCapability("capturePerformance", true);
+        capabilities.setCapability("extendedDebugging", false);
+        capabilities.setCapability("capturePerformance", false);
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
