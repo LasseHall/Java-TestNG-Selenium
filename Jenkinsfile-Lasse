@@ -8,8 +8,8 @@ node {
 
     stage 'Test'
     sauce('lassehall-Sauce-VDC') {
-        sauceconnect(options: 'tunnelIdentifier: JenkinsVMTunnel, -x https://eu-central-1.saucelabs.com/rest/v1', sauceConnectPath: '', useLatestSauceConnect: true, verboseLogging: true) {
-            sh "mvn test"
+        sauceconnect(options: '--tunnelIdentifier: JenkinsVMTunnel, --tunnel-cert public, -vv', sauceConnectPath: '', useLatestSauceConnect: true) {
+            sh "mvn clean test"
         }
     }
 
