@@ -9,8 +9,9 @@ node {
 
     stage 'Test'
     sauce('lassehall-Sauce-VDC') {
-        sauceconnect(options: "--logfile ${env.WORKSPACE}/sc.log --tunnel-identifier JenkinsVMTunnel --tunnel-cert public", sauceConnectPath: '', useLatestSauceConnect: true) {
+        sauceconnect(options: "--logfile ${env.WORKSPACE}/sc.log --tunnel-cert public", sauceConnectPath: '', useLatestSauceConnect: true, useGeneratedTunnelIdentifier: true) {
             sh "mvn clean test"
+            sh "env"
         }
     }
 
