@@ -235,8 +235,9 @@ public class TestBase  {
         capabilities.setCapability("name", methodName);
         capabilities.setCapability("commandTimeout", 60);
         capabilities.setCapability("idleTimeout", 300);
-        capabilities.setCapability("extendedDebugging", false);
-        capabilities.setCapability("capturePerformance", false);
+        capabilities.setCapability("tunnelIdentifier", System.getenv("TUNNEL_IDENTIFIER"));
+        capabilities.setCapability("extendedDebugging", true);
+        capabilities.setCapability("capturePerformance", true);
 
         if (buildTag != null) {
             capabilities.setCapability("build", buildTag);
